@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hatemodify/mad#readme",
   "dependencies": {
+    "express": "^4.16.2",
     "jslint": "^0.11.0"
   }
 }
