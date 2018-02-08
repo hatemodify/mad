@@ -129,6 +129,8 @@ exports.checkusername = function(req, res) {
 }
 
 
+
+
 // Sign up Post
 exports.sign_up_post = function(req, res) {
 	res.status(200);
