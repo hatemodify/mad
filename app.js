@@ -64,7 +64,6 @@ router.route('/process/login').post(function(req, res) {
             if (err) {
                 throw err;
             }
-
 			if (docs) {
 				console.dir(docs);
 
