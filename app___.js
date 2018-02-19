@@ -7,16 +7,17 @@ const express = require('express'),
 
 const bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
-    mongodb = require('mongodb'),
     static = require('serve-static'),
     jquery = require('jquery'),
     mongoose = require('mongoose');
 
-
+    
 // let errorHandler = require('errorhandler');
 
 const expressErrorHandler = require('express-error-handler');
+
 const expressSession = require('express-session');
+
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -52,77 +53,15 @@ let UserModel;
 
 
 function connectionDb() {
-    const databaseUrl = 'mongodb://localhost/local';
+    const databaseUrl = 'mongodb://localhost';
 
+    MongoClient.connect(databaseUrl, (err, db) => {
+        if (err) throw err;
+        console.log('db connetcted' + databaseUrl);
 
-    console.log('try db connect');
-
-    mongoose.Promise = global.Promise;
-    mongoose.connect(databaseUrl, {
-        useMongoClient: true
+        database = db.db('local');
     });
-    database = mongoose.connection;
-
-    database.on('error', console.error.bind(console, 'mongoose connection error'));
-
-    database.on('open', () => {
-        console.log('database connected');
-        UserSchema = mongoose.Schema({
-            id: {
-                type: String,
-                require: true,
-                unique: true
-            },
-            name: {
-                type: String,
-                index: 'hashed'
-            },
-            password: {
-                type: String,
-                required: true
-            },
-            age: {
-                type: Number,
-                "default": -1
-            }, created_at: {
-                type: Date,
-                index: {
-                    unique: false
-                },
-                "default": Date.now
-            }, updated_at: {
-                type: Date,
-                index: {
-                    unique: false
-                },
-                "default": Date.now
-            }
-        });
-
-
-        UserSchema.static('findById', (id, callback) => {
-            return this.find({ id: id }, callback);
-        });
-
-        UserSchema.static('findAll', (callback) => {
-            return this.find({}, callback);
-        });
-
-        console.log('Userschema defined');
-        UserModel = mongoose.model('users2', UserSchema);
-        console.log('UserModel defined');
-        console.log('userschema defined');
-        UserModel = mongoose.model("users", UserSchema);
-        console.log('usermodel defined');
-    });
-
-    database.on('disconnected', () => {
-        console.log('disconnected');
-        setInterval(connectionDb, 5000);
-    });
-
-
-}
+};
 
 
 
@@ -177,64 +116,33 @@ router.route('/process/adduser').post((req, res) => {
     const paramId = req.body.id || req.query.id;
     const paramPassword = req.body.password || req.query.password;
     const paramName = req.body.name || req.query.name;
-    console.log(paramId, paramName, paramPassword);
-    if (database) {
-        addUser(database, paramId, paramPassword, paramName, function (err, results) {
-            if (err) throw err;
 
-            if (result && result.insertCount > 0) {
+
+    console.log(paramId, paramName, paramPassword);
+
+    if(database){
+        addUser(database, paramId, paramPassword, paramName,(err, result)=>{
+            if(err) throw err;
+
+            if(result && result.insertCount > 0 ){
                 console.dir(result);
                 res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
                 res.write('<h1>success </h1>');
                 res.end();
-            } else {
+            }else{
                 res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
                 res.write('<h1>failed </h1>');
                 res.end();
             }
         });
-    } else {
+    }else{
         res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
         res.write('<h1>db connect fail </h1>');
         res.end();
     }
 });
 
-router.route('/process/listuser').post((req, res) => {
-    console.log('call list user');
 
-    if (database) {
-        UserModel.findAll((err, results) => {
-            if (err) {
-                console.log('error' + err.stack);
-
-                res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
-                res.write('<h2>error</h2>');
-                res.write(err.stack);
-                res.end();
-
-                return;
-            }
-
-            if (results) {
-                console.dir(results);
-                res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
-                res.write('<div><ul>');
-                for (let i = 0; i < results.length; i++) {
-                    const curId = results[i]._doc.id;
-                    const curName = results[i]._doc.name;
-                    res.write('<li>' + i + curId + ':' + curName + '</li>');
-                }
-                res.write('</ul></div>');
-                res.end();
-            }else{
-                res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
-                res.write('<h2>failed</h2>');
-                res.end();
-            }
-        });
-    }
-});
 
 app.use('/', router);
 
@@ -242,46 +150,39 @@ app.use('/', router);
 function addUser(db, id, password, name, callback) {
     console.log('adduser call', id, password, name);
 
-    const users = new UserModel({
-        id: id,
-        password: password,
-        name: name
-    });
+    const users = db.collection('users');
 
-
-
-    users.save((err) => {
+    users.insertMany([{
+        "id": id,
+        "password": password,
+        "name": name
+    }], (err, result) => {
         if (err) callback(err, null); return;
-        console.log('add user');
-        callback(null, users);
+        result.insertCount > 0 ? console.log('add USer' + result.insertCount) : console.log('no record');
+
+        callback(result, null);
     });
 
-};
+}
+
+
 
 const authUser = function (db, id, password, callback) {
     console.log('authuser call');
 
-    // const users = db.collection('users');
+    const users = db.collection('users');
 
-    UserModel.findById({ "id": id, "password": password }, (err, results) => {
+    users.find({
+        "id": id,
+        "password": password
+    }).toArray(function (err, docs) {
         if (err) {
             callback(err, null);
             return;
         }
-
-        console.log(id, password)
-        console.dir(results);
-
-
-        if (results.length > 0) {
+        if (docs.length > 0) {
             console.log('find' + id, password);
-            if (results[0]._doc.password == password) {
-                console.log('password correct');
-                callback(null, results);
-            } else {
-                console.log('password not correct');
-                callback(null, null);
-            }
+            callback(null, docs);
         } else {
             console.log('not find');
             callback(null, null);
