@@ -1,38 +1,22 @@
 {
-  "name": "mad",
+  "name": "ex",
   "version": "1.0.0",
-  "description": "테스트야",
-  "main": "require.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hatemodify/mad.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hatemodify/mad/issues"
-  },
-  "homepage": "https://github.com/hatemodify/mad#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
-    "ejs-locals": "^1.0.2",
-    "errorhandler": "^1.5.0",
     "express": "^4.16.2",
-    "express-error-handler": "^1.1.0",
-    "express-method-override": "0.0.3",
-    "express-session": "^1.15.6",
-    "jquery": "^3.3.1",
-    "jslint": "^0.11.0",
-    "mongodb": "^3.0.2",
-    "mongoose": "^4.13.11",
-    "morgan": "^1.9.0",
-    "nodemon": "^1.12.5",
-    "serve-static": "^1.13.1"
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "method-override": "^2.3.10",
+    "mongodb": "^3.0.3",
+    "mongoose": "^5.0.7",
+    "nodemon": "^1.15.1"
   }
 }
