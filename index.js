@@ -4,7 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-
+const sass = require('node-sass');
 
 
 
@@ -37,9 +37,11 @@ app.use(methodOverride("_method"));
 
 
 
+
 // const router = express.Router();
 app.use("/", require("./routes/index"));
 app.use("/posts", require("./routes/posts"));
+app.use("/users", require("./routes/user"));
 
 
 

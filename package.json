@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node-sass --watch public/css -o public/css --s compressed | nodemon"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,8 @@
     "method-override": "^2.3.10",
     "mongodb": "^3.0.3",
     "mongoose": "^5.0.7",
+    "mustache": "^2.3.0",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.15.1"
   }
 }

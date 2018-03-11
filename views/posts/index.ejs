@@ -1,41 +1,58 @@
 <!DOCTYPE html>
-<html>
- <head>
-  
- </head>
- <body>
-  
+<html lang="en">
 
-  <div class="container post post-index">
-   <div class="buttons">
-    <a class="btn btn-default" href="/posts/new">New</a>
-   </div>
+    <head>
+        <% include ../partials/header.ejs %>
+            <title>
+                <%= title %>
+            </title>
+    </head>
 
-   <table class="table table-striped posts">
-    <thead>
-     <tr>
-      <th class="title">Title</th>
-      <th class="date">Date</th>
-     </tr>
-    </thead>
-    <tbody>
-     <% if(posts == null || posts.length == 0){ %>
-      <tr>
-       <td class="noData" colspan=100> There is no data to show :( </td>
-      </tr>
-     <% } %>
-     <% posts.forEach(function(post) { %>
-      <tr>
-       <td class="title">
-        <a href="/posts/<%= post._id %>"><div><%= post.title %></div></a>
-       </td>
-       <td class="date">
-        <%= post.createdAt %>
-       </td>
-      </tr>
-     <% }) %>
-    </tbody>
-   </table>
-  </div> <!-- container end -->
- </body>
+    <body>
+
+        <div class="wrap">
+            <div class="contents-wrap">
+                <section class="page-tit">
+                    <span class="">&lt;posts&gt;</span>
+                </section>
+                <article class="wrap-post">
+                    <h3 class="tit-post">javascript</h3>
+                    <ul class="post-list">
+                        <% if(posts == null || posts.length == 0){ %>
+                            <li> There is no data to show :(</li>
+                            <% } %>
+                            <% posts.forEach(function(post) { %>
+                                <li>
+                                    <span class="txt-category">
+                                        <%= post.category %>
+                                    </span>
+                                    <span class="txt-regdate" class="date">
+                                        <%= post.createdAt %>
+                                    </span>
+                                    <span class="txt-writer"></span>
+                                    <a class="post-subject" href="/posts/<%= post._id %>">
+                                        <%= post.title %>
+                                    </a>
+                                </li>
+                                <% }) %>
+
+                    </ul>
+                </article>
+
+            </div>
+            <div class="page-bottom">
+                <section class="contents-wrap">
+                    <h2 class="page-end">&lt;/posts&gt;</h2>
+                    <a href="/project.asp" class="next-page page-link">
+                        <span>project</span>
+                        <i class="arrow"></i>
+                    </a>
+                </section>
+            </div>
+        </div>
+
+
+        <% include ../partials/footer.ejs %>
+    </body>
+
 </html>

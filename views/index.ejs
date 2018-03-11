@@ -1,12 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    hellow world
-</body>
+    <head>  
+        <% include partials/header.ejs %>
+            <title> <%= title %></title>
+    </head>
+
+    <body>
+        <div class="page-wrap">
+            <div class="wrap">
+                <div class="slides">
+                    <div id="first-slide" class="slide">
+                    </div>
+                </div>
+                <canvas class="particle" id="particle"></canvas>
+                <div class="main-txt">
+                    <h2>
+                        <strong class="load-animation dpIb">
+                            <span class="perspective-ani">
+                                <span>betray</span>
+                            </span>
+                            <span class="transition01"></span>
+                        </strong>
+                        <strong class="load-animation">
+                            <span class="perspective-ani">
+                                <span>familiar things</span>
+                            </span>
+                            <span class="transition01"></span>
+                        </strong>
+                        <span class="perspective-ani">
+                            <span class="line"></span>
+                        </span>
+                        <em class="load-animation">
+                            <span class="perspective-ani">
+                                <span>배반하라 익숙한것들을</span>
+                            </span>
+                            <span class="transition01 other"></span>
+                        </em>
+                    </h2>
+                    <a href="/about" class="btn-about hover-effect01">
+                        ABOUT MAD
+                    </a>
+                </div>
+                <a href="javascript:void(0)" onclick="scrollDown();" class="scrolldown load-animation">
+                    <span class="hidden">scroll down</span>
+                    <span class="transition01"></span>
+                </a>
+                <div class="contents-wrap">
+                    <section class="project-main">
+                        <ul class="project-list">
+                            <li class="col-11 parallax-item" data-distance="0.35">
+                                <figure class="project-thumb viewport-eff">
+                                    <span class="hidden">
+                                        <img src="/images/project01.jpg" alt="">
+                                    </span>
+                                    <span class="transition01"></span>
+                                </figure>
+                                <figcaption class="info">
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">quann</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">entertainment</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <em class="ko viewport-eff">
+                                        <span class="hidden">콴 엔터테인먼트</span>
+                                        <span class="transition02 other"></span>
+                                    </em>
+                                    <div class="btn cf">
+                                        <a href="#" class="common-btn01 fl mr20">
+                                            <span>visit site</span>
+                                        </a>
+                                        <a href="#" class="common-btn02 fl">
+                                        </a>
+                                    </div>
+                                </figcaption>
+                            </li>
+                            <li class="col-11 parallax-item" data-distance="0.25">
+                                <figure class="project-thumb viewport-eff">
+                                    <span class="hidden">
+                                        <img src="/images/project02.jpg" alt="">
+                                    </span>
+                                    <span class="transition01"></span>
+                                </figure>
+                                <figcaption class="info">
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">hillstate</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">volleyball team</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <em class="ko viewport-eff">
+                                        <span class="hidden">현대건설 배구단</span>
+                                        <span class="transition02 other"></span>
+                                    </em>
+                                    <div class="btn cf">
+                                        <a href="#" class="common-btn01 fl mr20">
+                                            <span>visit site</span>
+                                        </a>
+                                        <a href="#" class="common-btn02 fl">
+
+                                        </a>
+                                    </div>
+                                </figcaption>
+                            </li>
+                            <li class="col-11 parallax-item" data-distance="0.3">
+                                <figure class="project-thumb viewport-eff">
+                                    <span class="hidden">
+                                        <img src="/images/project03.jpg" alt="">
+                                    </span>
+                                    <span class="transition01"></span>
+                                </figure>
+                                <figcaption class="info">
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">edu</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">hdec</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <em class="ko viewport-eff">
+                                        <span class="hidden">현대건설 기술교육원</span>
+                                        <span class="transition02 other"></span>
+                                    </em>
+                                    <div class="btn cf">
+                                        <a href="#" class="common-btn01 fl mr20">
+                                            <span>visit site</span>
+                                        </a>
+                                        <a href="#" class="common-btn02 fl">
+
+                                        </a>
+                                    </div>
+                                </figcaption>
+                            </li>
+                            <li class="col-11 parallax-item" data-distance="0.5">
+                                <figure class="project-thumb viewport-eff">
+                                    <span class="hidden">
+                                        <img src="/images/project04.jpg" alt="">
+                                    </span>
+                                    <span class="transition01"></span>
+                                </figure>
+                                <figcaption class="info">
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">tn</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <strong class="project-name viewport-eff">
+                                            <span class="hidden">plastic surgery</span>
+                                            <span class="transition02 other"></span>
+                                        </strong>
+                                    </div>
+                                    <em class="ko viewport-eff">
+                                        <span class="hidden">TN 성형외과</span>
+                                        <span class="transition02 other"></span>
+                                    </em>
+                                    <div class="btn cf">
+                                        <a href="#" class="common-btn01 fl mr20">
+                                            <span>visit site</span>
+                                        </a>
+                                        <a href="#" class="common-btn02 fl">
+
+                                        </a>
+                                    </div>
+                                </figcaption>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn-all-project">
+                            <span class="txt">all project</span>
+                            <span class="line01"></span>
+                            <span class="line02"></span>
+                            <span class="line03"></span>
+                            <span class="bg"></span>
+                        </a>
+                    </section>
+                </div>
+                <section class="getintouch-main parallax-item bottom-contents">
+                    <div class="contents-wrap">
+                        <div class="getintouch-txt col-5">
+                            <div class="mb40">
+                                <h3 class="section-tit viewport-eff">
+                                    <span class="hidden">get in touch</span>
+                                    <span class="transition01"></span>
+                                </h3>
+                            </div>
+                            <div class="mb10">
+                                <em class="viewport-eff">
+                                    <span class="hidden">hatemodify@gmail.com</span>
+                                    <span class="transition01"></span>
+                                </em>
+                            </div>
+                            <div class="mb10">
+                                <em class="viewport-eff">
+                                    <span class="hidden">010 6565 0710</span>
+                                    <span class="transition01"></span>
+                                </em>
+                            </div>
+                            <span class="line viewport-eff">
+                                <span class="hidden"></span>
+                                <span class="transition01"></span>
+                            </span>
+                            <div>
+                                <em class="ko viewport-eff">
+                                    <span class="hidden">“SNS 따위는 하지 않습니다.”</span>
+                                    <span class="transition01"></span>
+                                </em>
+                            </div>
+                        </div>
+                        <form class="getintouch-form">
+                            <fieldset>
+                                <h3 class="perspective-ani">
+                                    <span>제가 도울 수 있는 일이 있다면 도와드릴게요.</span>
+                                </h3>
+                                <div class="getintouch-input01 fl">
+                                    <div class="input-wrap perspective-ani">
+                                        <label class="t-d1" for="t-d1">이름</label>
+                                        <input type="text" class="t-d1 input-t" id="t-d1" placeholder="이름을 입력해 주세요">
+                                        <span class="l"></span>
+                                    </div>
+                                    <div class="input-wrap perspective-ani">
+                                        <label class="t-d2" for="t-d2">연락처</label>
+                                        <input type="text" class="t-d2 input-t" id="t-d2" placeholder="연락처를 입력해 주세요">
+                                        <span class="l"></span>
+                                    </div>
+                                    <div class="input-wrap perspective-ani">
+                                        <label class="t-d3" for="t-d3">이메일</label>
+                                        <input type="text" class="t-d3 input-t" id="t-d3" placeholder="이메일을 입력해주세요">
+                                        <span class="l"></span>
+                                    </div>
+                                    <!--                        <div class="input-wrap">
+                                        <label>프로젝트유형</label>
+                                        <input type="text" class="" placeholder="프로젝트 유형을 선택해 주세요">
+                                    </div>-->
+                                </div>
+                                <div class="getintouch-input02 fl perspective-ani">
+                                    <textarea class="getintouch-cont input-t" placeholder="메세지를 남겨주세요"></textarea>
+                                    <a href="javascript:void(0);" class="btn-submit common-btn01">
+                                        <span>연락주세요</span>
+                                    </a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <% include partials/footer.ejs %>
+    </body>
+
 </html>

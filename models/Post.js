@@ -8,6 +8,11 @@ const postSchema = mongoose.Schema({
     body: {
         type: String
     },
+    category: {
+        type: String,
+        require:true,
+        unique:true,
+    },    
     createdAt: {
         type: Date,
         default: Date.now

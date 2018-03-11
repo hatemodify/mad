@@ -56,9 +56,9 @@
 // }
 
 
-var express  = require("express");
-var router   = express.Router();
-var Post     = require("../models/Post");
+const express  = require("express");
+const router   = express.Router();
+const Post     = require("../models/Post");
 
 // Index
 router.get("/", function(req, res){
@@ -66,7 +66,7 @@ router.get("/", function(req, res){
   .sort("-createdAt")
   .exec(function(err, posts){
     if(err) return res.json(err);
-    res.render("posts/index", {posts:posts});
+    res.render("posts/index", {posts:posts, title:'Posts'});
   });
 });
 
