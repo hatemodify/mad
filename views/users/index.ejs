@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <% include ../partials/header.ejs %>
+            <title>
+              
+            </title>
+    </head>
+
+    <body>
+
+        <div class="wrap">
+            <div class="contents-wrap">
+                    <ul class="floats">
+                            <% if(users == null || users.length == 0){ %>
+                             <div class="noData" colspan=100> There is no user yet.</div>
+                            <% } %>
+                            <% users.forEach(function(user) { %>
+                             <li>
+                              <a href="/users/<%= user.username %>"><%= user.username %></a>
+                             </li>
+                            <% }) %>
+                           </ul>
+            </div>
+            <div class="page-bottom">
+                <section class="contents-wrap">
+                    <h2 class="page-end">&lt;/posts&gt;</h2>
+                    <a href="/project.asp" class="next-page page-link">
+                        <span>project</span>
+                        <i class="arrow"></i>
+                    </a>
+                </section>
+            </div>
+        </div>
+
+
+        <% include ../partials/footer.ejs %>
+    </body>
+
+</html>

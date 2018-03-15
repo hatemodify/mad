@@ -1,6 +1,6 @@
 const express = require('express');
 const router   = express.Router();
-const Post     = require("../models/User");
+const User     = require("../models/User");
 
 
 router.get("/", function(req, res){
@@ -12,9 +12,9 @@ router.get("/", function(req, res){
     });
    });
    
-   // New
-   router.get("/new", function(req, res){
-    res.render("users/new", {user:{}});
+   // signup
+   router.get("/signup", function(req, res){
+    res.render("users/signup", {user:{}});
    });
    
    // create
@@ -50,7 +50,7 @@ router.get("/", function(req, res){
    
      // update user object
      user.originalPassword = user.password;
-     user.password = req.body.newPassword? req.body.newPassword : user.password; // 2-3
+     user.password = req.body.signupPassword? req.body.signupPassword : user.password; // 2-3
      for(var p in req.body){ // 2-4
       user[p] = req.body[p];
      }

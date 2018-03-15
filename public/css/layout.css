@@ -1767,7 +1767,8 @@ body.loading .preloader .preloader-img:after {
 
 .wrap-post {
   background: #1e1e1e;
-  padding: 80px 4.16667%; }
+  padding: 80px 4.16667%;
+  margin-bottom: 40px; }
 
 .wrap-post .tit-post {
   margin-bottom: 45px;
@@ -1780,15 +1781,80 @@ body.loading .preloader .preloader-img:after {
   background: #1e1e1e; }
 
 .post-list li {
-  overflow: hidden; }
+  overflow: hidden;
+  padding-top: 25px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 35px; }
 
 .post-list li .post-subject {
   display: block;
-  font-size: 18px;
+  position: relative;
+  font-size: 24px;
   letter-spacing: 0.05em;
-  color: #fff; }
+  color: #fff;
+  margin-top: 20px; }
+
+.post-list li .post-subject:after {
+  display: block;
+  width: 40px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #fc494b;
+  content: "Detail";
+  background: url(../images/ico_arrow.png) no-repeat right 5px;
+  background-size: 4px 6px; }
 
 .post-list li .txt-regdate,
 .post-list li .txt-writer {
   color: #676767;
-  font-size: 14px; }
+  font-size: 16px; }
+
+.post-list li .txt-regdate {
+  margin-right: 20px; }
+
+.post-list .ico_calender {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background: url(../images/ico_calender.png); }
+
+.post-list .ico_write {
+  display: inline-block;
+  width: 18px;
+  height: 20px;
+  margin-right: 10px;
+  background: url(../images/ico_write.png); }
+
+.wrap-pager {
+  margin-bottom: 200px; }
+
+.wrap-pager .post-pager {
+  float: left; }
+
+.wrap-pager .post-pager li {
+  float: left;
+  width: 64px;
+  line-height: 52px;
+  text-align: center;
+  background: #f5f5f5; }
+
+.wrap-pager .post-pager li.on {
+  background: #1e1e1e;
+  color: #fff; }
+
+.wrap-pager .post-pager li.on a {
+  color: #fff; }
+
+.wrap-pager .post-pager li a {
+  color: #1e1e1e;
+  font-size: 18px; }
+
+.wrap-pager .btn-write {
+  float: right;
+  text-align: center;
+  width: 255px;
+  line-height: 54px;
+  color: #fff;
+  font-size: 24px;
+  background: #5b5b5b; }

@@ -13,32 +13,54 @@
         <div class="wrap">
             <div class="contents-wrap">
                 <section class="page-tit">
-                    <span class="">&lt;posts&gt;</span>
+                    <span class="">&lt;
+                        <%= title %>&gt;</span>
                 </section>
                 <article class="wrap-post">
-                    <h3 class="tit-post">javascript</h3>
+                    <h3 class="tit-post">
+                        <%= category %>
+                    </h3>
                     <ul class="post-list">
                         <% if(posts == null || posts.length == 0){ %>
                             <li> There is no data to show :(</li>
                             <% } %>
-                            <% posts.forEach(function(post) { %>
-                                <li>
-                                    <span class="txt-category">
-                                        <%= post.category %>
-                                    </span>
-                                    <span class="txt-regdate" class="date">
-                                        <%= post.createdAt %>
-                                    </span>
-                                    <span class="txt-writer"></span>
-                                    <a class="post-subject" href="/posts/<%= post._id %>">
-                                        <%= post.title %>
-                                    </a>
-                                </li>
-                                <% }) %>
+                                <% posts.forEach(function(post) { %>
+                                    <li>
+                                        <span class="txt-regdate" class="date">
+                                            <span class="ico_calender"></span>
+                                            <%= post.createdDate %>
+                                        </span>
+                                        <span class="txt-writer">
+                                            <span class="ico_write"></span>
+                                        </span>
+                                        <a class="post-subject" href="/posts/<%= post._id %>">
+                                            <%= post.title %>
+                                        </a>
+                                    </li>
+                                    <% }) %>
 
                     </ul>
                 </article>
-
+                <div class="wrap-pager">
+                    <ul class="post-pager">
+                        <li class="on">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-write">write</a>
+                </div>
             </div>
             <div class="page-bottom">
                 <section class="contents-wrap">

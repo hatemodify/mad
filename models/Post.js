@@ -10,9 +10,8 @@ const postSchema = mongoose.Schema({
     },
     category: {
         type: String,
-        require:true,
-        unique:true,
-    },    
+        require: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -26,19 +25,19 @@ const postSchema = mongoose.Schema({
         }
     });
 
-postSchema.virtual('createdDate').get(() => {
+postSchema.virtual("createdDate").get(function () {
     return getDate(this.createdAt);
 });
 
-postSchema.virtual('createdTime').get(() => {
+postSchema.virtual('createdTime').get(function () {
     return getTime(this.createdAt);
 });
 
-postSchema.virtual('updateDate').get(() => {
+postSchema.virtual('updateDate').get(function () {
     return getDate(this.updatedAt);
 });
 
-postSchema.virtual('updateTime').get(() => {
+postSchema.virtual('updateTime').get(function () {
     return getTime(this.updatedAt);
 });
 
