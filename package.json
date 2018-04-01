@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node-sass --watch public/css -o public/css --s compressed | nodemon"
+    "start": "node-sass --watch public/css -o public/css --s compressed | nodemon"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "mongoose": "^5.0.7",
     "mustache": "^2.3.0",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.15.1",
+    "summernote-nodejs": "^1.0.4"
   }
 }

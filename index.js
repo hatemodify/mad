@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const sass = require('node-sass');
-
+const save = require('summernote-nodejs');
+const output = save(summernoteContents);
 
 
 const app = express();

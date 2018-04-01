@@ -49,8 +49,8 @@ router.post("/", function(req, res){
 });
 
 // show
-router.get("/:id", function(req, res){
-  Post.findOne({_id:req.params.id}, function(err, post){
+router.get("/:title", function(req, res){
+  Post.findOne({title:req.params.title}, function(err, post){
     if(err) return res.json(err);
     res.render("posts/show", {post:post});
   });
