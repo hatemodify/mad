@@ -207,3 +207,4 @@ local.properties
 .vagrant/
 
 .vscode/
+.history/

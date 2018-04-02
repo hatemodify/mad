@@ -1,59 +1,64 @@
 const mongoose = require('mongoose');
-const postSchema = mongoose.Schema({    
-    title: {
-        type: String,
-        require: true
-    },
-    body: {
-        type: String
-    },
-    category: {
-        type: String,
-        require:true,        
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date
-    }
+const postSchema = mongoose.Schema({
+  title: {
+    type: String,
+    require: true
+  },
+  body: {
+    type: String
+  },
+  category: {
+    type: String,
+    require: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true
+  }, //1
 }, {
-        toObject: {
-            virtuals: true
-        }
-    });
+    toObject: {
+      virtuals: true
+    }
+  });
 
 postSchema.virtual("createdDate").get(function () {
-    return getDate(this.createdAt);
+  return getDate(this.createdAt);
 });
 
 postSchema.virtual('createdTime').get(function () {
-    return getTime(this.createdAt);
+  return getTime(this.createdAt);
 });
 
 postSchema.virtual('updateDate').get(function () {
-    return getDate(this.updatedAt);
+  return getDate(this.updatedAt);
 });
 
 postSchema.virtual('updateTime').get(function () {
-    return getTime(this.updatedAt);
+  return getTime(this.updatedAt);
 });
 
 const Post = mongoose.model('post', postSchema);
 
 function getDate(dateObj) {
-    if (dateObj instanceof Date)
-        return dateObj.getFullYear() + "-" + get2digits(dateObj.getMonth() + 1) + "-" + get2digits(dateObj.getDate());
+  if (dateObj instanceof Date)
+    return dateObj.getFullYear() + "-" + get2digits(dateObj.getMonth() + 1) + "-" + get2digits(dateObj.getDate());
 }
 
 function getTime(dateObj) {
-    if (dateObj instanceof Date)
-        return get2digits(dateObj.getHours()) + ":" + get2digits(dateObj.getMinutes()) + ":" + get2digits(dateObj.getSeconds());
+  if (dateObj instanceof Date)
+    return get2digits(dateObj.getHours()) + ":" + get2digits(dateObj.getMinutes()) + ":" + get2digits(dateObj.getSeconds());
 }
 
 function get2digits(num) {
-    return ("0" + num).slice(-2);
+  return ("0" + num).slice(-2);
 }
 
 

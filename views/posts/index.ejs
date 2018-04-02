@@ -32,6 +32,7 @@
                                         </span>
                                         <span class="txt-writer">
                                             <span class="ico_write"></span>
+                                            <%= post.author %>
                                         </span>
                                         <a class="post-subject" href="/posts/<%= post.title %>">
                                             <%= post.title %>
@@ -59,7 +60,7 @@
                             <a href="#">1</a>
                         </li>
                     </ul>
-                    <a href="#" class="btn-write">write</a>
+                    <a href="/posts/new" class="btn-write">write</a>
                 </div>
             </div>
             <div class="page-bottom">

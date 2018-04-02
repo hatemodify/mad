@@ -18,6 +18,15 @@
      <h3 class="contentBoxTop">New Post</h3>
      <fieldset>
       <div class="form-group">
+
+          <% if(isAuthenticated){ %>
+            <li><a href="/users/<%= currentUser.username %>">My Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+           <% } else { %>
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/login">Login</a></li>
+           <% } %>
+        
           <select id="category" name="category">
             <option value="javascript">javascript</option>
             <option value="node">node</option>
@@ -26,6 +35,7 @@
           </select>
        <label for="title" class="col-sm-2 control-label">Title</label>
        <div class="col-sm-10">
+         <input type="text" name="author" value="<%= currentUser.username %>">
         <input class="form-control" type="text" id="title" name="title" value="">
        </div>
       </div>
