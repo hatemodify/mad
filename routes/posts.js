@@ -6,6 +6,7 @@ const util = require("../util");
 // Index
 router.get("/", function (req, res) {
   Post.find({})
+    .populate("author") // 1
     .sort("-createdAt")
     .exec(function (err, posts) {
       if (err) return res.json(err);
@@ -15,14 +16,14 @@ router.get("/", function (req, res) {
 
 // New
 router.get("/new", util.isLoggedin, function (req, res) {
-  var post = req.flash("post")[0] || {};
-  var errors = req.flash("errors")[0] || {};
+  const post = req.flash("post")[0] || {};
+  const errors = req.flash("errors")[0] || {};
   res.render("posts/new", { post: post, errors: errors });
 });
 
 // create
 router.post("/", util.isLoggedin, function (req, res) {
-  req.body.author = req.user._id;
+  req.body.author = req.user._id;  
   Post.create(req.body, function (err, post) {
     if (err) {
       req.flash("post", req.body);
@@ -33,21 +34,45 @@ router.post("/", util.isLoggedin, function (req, res) {
   });
 });
 
-router.get("/:category", function (req, res) {
+// router.get("/:category", function (req, res) {
+//   Post.find({
+//     "category": req.params.category
+//   })
+//     .sort("-createdAt")
+//     .exec(function (err, posts) {
+//       if (err) return res.json(err);
+//       res.render("posts/index", { posts: posts, title: `${req.params.category}`, 'category': req.params.category });
+//     });
+// });
+
+router.get("/javascript", function(req, res){
   Post.find({
-    "category": req.params.category
+    "category":"javascript"
   })
-    .sort("-createdAt")
-    .exec(function (err, posts) {
-      if (err) return res.json(err);
-      res.render("posts/index", { posts: posts, title: `Posts-${req.params.category}`, 'category': req.params.category });
-    });
+  .sort("-createdAt")
+  .exec(function(err, posts){
+    if(err) return res.json(err);
+    res.render("posts/index", {posts:posts, title:'Posts', 'category' : 'javascript'});
+  });
 });
+
+router.get("/vue", function(req, res){
+  Post.find({
+    "category":"vue"
+  })
+  .sort("-createdAt")
+  .exec(function(err, posts){
+    if(err) return res.json(err);
+    res.render("posts/index", {posts:posts, title:'Posts', category:'vue'});
+  });
+});
+
+
 
 
 // create
 router.post("/", function (req, res) {
-  console.log(req.body.author);
+  
   req.body.author = req.user._id; // 2
   Post.create(req.body, function (err, post) {
     if (err) {
@@ -55,6 +80,7 @@ router.post("/", function (req, res) {
       req.flash("errors", util.parseError(err));
       return res.redirect("/posts/new");
     }
+    console.log(req.body.author);
     res.redirect("/posts");
   });
 });

@@ -32,7 +32,7 @@
                                         </span>
                                         <span class="txt-writer">
                                             <span class="ico_write"></span>
-                                            <%= post.author %>
+                                            <%= post.author ? post.author.username : "" %>
                                         </span>
                                         <a class="post-subject" href="/posts/<%= post.title %>">
                                             <%= post.title %>

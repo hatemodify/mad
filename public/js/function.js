@@ -1,7 +1,4 @@
  jQuery(document).ready(function ($) {
-  tinymce.init({
-    selector: '.editor-body'
-  });
    mainAnimation();
    $('body').addClass('page-load');
    if ($('body').hasClass('page-load')) {
