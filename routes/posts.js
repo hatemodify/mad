@@ -71,8 +71,7 @@ router.get("/vue", function(req, res){
 
 
 // create
-router.post("/", function (req, res) {
-  
+router.post("/", function (req, res) {  
   req.body.author = req.user._id; // 2
   Post.create(req.body, function (err, post) {
     if (err) {
@@ -92,7 +91,9 @@ router.get("/:title", function (req, res) {
     .populate("author")               // 3
     .exec(function (err, post) {        // 3
       if (err) return res.json(err);
-      res.render("posts/show", { post: post });
+      res.render("posts/show", { 
+        post: post 
+      });
     });
 });
 

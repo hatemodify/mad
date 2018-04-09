@@ -22,8 +22,11 @@
 <!--[if lt IE 9]> <script src="//js/html5shiv.js"></script><![endif]-->
 <script>
     $(function () {
-        $('.editor-body').froalaEditor();
-        $('.post-cont').froalaEditor('html.get');
+        $('.editor-body').froalaEditor({
+          pastePlain: false
+        });
+        $('.post-cont').froalaEditor('html.get', true);
+        $('.post-cont').froalaEditor('codeView.get');
     });
 </script>
 </head>
