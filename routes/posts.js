@@ -79,7 +79,6 @@ router.post("/", function (req, res) {
       req.flash("errors", util.parseError(err));
       return res.redirect("/posts/new");
     }
-    console.log(req.body.author);
     res.redirect("/posts");
   });
 });

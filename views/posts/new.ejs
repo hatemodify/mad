@@ -1,82 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <% include ../partials/header.ejs %>
-      <title>
-        
-      </title>
-  </head>
+<head>
+  <% include ../partials/header.ejs %>
+    <title>
 
-  <body>
+    </title>
+</head>
 
-    <div class="wrap">
-      <div class="contents-wrap">
-        <section class="page-tit">
-          <span class="">&lt;
-            &gt;</span>
-        </section>
-        <form class="post-form form-horizontal" action="/posts" method="post">
-          <div class="contentBox">
-            <h3 class="contentBoxTop">New Post</h3>
-            <fieldset>
-              <div class="form-group">
+<body>
 
-                <% if(isAuthenticated){ %>
-                  <li>
-                    <a href="/users/<%= currentUser.username %>">My Account</a>
-                  </li>
-                  <li>
-                    <a href="/logout">Logout</a>
-                  </li>
-                  <% } else { %>
-                    <li>
-                      <a href="/users/new">Sign Up</a>
-                    </li>
-                    <li>
-                      <a href="/login">Login</a>
-                    </li>
-                    <% } %>
-
-                      <select id="category" name="category">
-                        <option value="javascript">javascript</option>
-                        <option value="node">node</option>
-                        <option value="vue">vue</option>
-                        <option value="react">react</option>
-                      </select>
-                      <label for="title" class="col-sm-2 control-label">Title</label>
-                      <div class="col-sm-10">
-                        <input type="text" name="author" value="<%= currentUser.username %>">
-                        <input class="form-control" type="text" id="title" name="title" value="">
-                      </div>
-              </div>
-              <div class="form-group">
-                <label for="body" class="col-sm-2 control-label">Body</label>
-                <div class="col-sm-10">
-                  <textarea id="summernote" name="body" class="editor-body"></textarea>
-                  
-                </div>
-              </div>
-            </fieldset>
+  <div class="wrap">
+    <div class="contents-wrap">
+      <section class="page-tit">
+        <span class="">&lt;new post&gt;
+        </span>
+      </section>
+      <form class="post-form" action="/posts" method="post">
+        <fieldset>
+          <input type="hidden" name="author" value="<%= currentUser.username %>">
+          <div class="input-wrap">
+            <label class="t-d1" for="t-d1">제목</label>
+            <input type="text" class="t-d1 input-t" id="title" name="title" placeholder="제목 입력해 주세요" required>
+            <span class="l"></span>
           </div>
-          <div class="buttons">
-            <button type="submit" class="btn btn-default">Submit</button>
+          <div class="input-wrap">
+            <label class="t-d1" for="t-d1">CATEGORY</label>
+            <select id="category" name="category">
+              <option value="javascript">javascript</option>
+              <option value="node">node</option>
+              <option value="vue">vue</option>
+              <option value="react">react</option>
+            </select>
           </div>
-        </form>
-      </div>
-      <div class="page-bottom">
-        <section class="contents-wrap">
-          <h2 class="page-end">&lt;/posts&gt;</h2>
-          <a href="/project.asp" class="next-page page-link">
-            <span>project</span>
-            <i class="arrow"></i>
-          </a>
-        </section>
-      </div>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <textarea id="summernote" name="body" class="editor-body"></textarea>
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </form>
     </div>
+    <div class="page-bottom">
+      <section class="contents-wrap">
+        <h2 class="page-end">&lt;/posts&gt;</h2>
+        <a href="/project.asp" class="next-page page-link">
+          <span>project</span>
+          <i class="arrow"></i>
+        </a>
+      </section>
+    </div>
+  </div>
 
 
-    <% include ../partials/footer.ejs %>
-  </body>
+  <!--              <% if(isAuthenticated){ %>
+                                   <li>
+                                     <a href="/users/<%= currentUser.username %>">My Account</a>
+                                   </li>
+                                   <li>
+                                     <a href="/logout">Logout</a>
+                                   </li>
+                                   <% } else { %>
+                                     <li>
+                                       <a href="/users/new">Sign Up</a>
+                                     </li>
+                                     <li>
+                                       <a href="/login">Login</a>
+                                     </li>
+                                     <% } %> -->
+  <% include ../partials/footer.ejs %>
+</body>
 
 </html>

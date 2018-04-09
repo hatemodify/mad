@@ -1,0 +1,89 @@
+<!DOCTYPE html">
+<html lang="ko">
+
+<head>
+  <% include partials/header.ejs %>
+    <title>
+      <%= title %>
+    </title>
+    <div class="wrap">
+      <div class="contents-wrap">
+        <section class="page-tit">
+          <span class="page-name">
+            <i style="display: inline;">&lt;</i>
+            <i style="display: inline;">c</i>
+            <i style="display: inline;">o</i>
+            <i style="display: inline;">n</i>
+            <i style="display: inline;">t</i>
+            <i style="display: inline;">a</i>
+            <i style="display: inline;">c</i>
+            <i style="display: inline;">t</i>
+            <i style="display: inline;">&gt;</i>
+            <span class="cursor">|</span>
+          </span>
+        </section>
+        <section class="page-top viewport-eff contact-top parallax-item viewport">
+          <span class="page-img contact" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></span>
+          <span class="bg contact-b" style="transform: translate(100%, 0%) matrix(1, 0, 0, 1, 0, 0);"></span>
+          <form class="contact-form" method="post" name="contactform" action="contact-handler.php">
+            <fieldset>
+              <legend></legend>
+              <h3 class="perspective-ani">
+                <span>제가 도울 수 있는 일이 있다면 도와드릴게요.</span>
+              </h3>
+              <div class="getintouch-input01">
+                <div class="input-wrap perspective-ani">
+                  <label class="t-d1" for="t-d1">이름</label>
+                  <input type="text" class="t-d1 input-t" id="t-d1" name="name" placeholder="이름을 입력해 주세요">
+                  <i class="l"></i>
+                </div>
+                <div class="input-wrap perspective-ani">
+                  <label class="t-d2" for="t-d2">연락처</label>
+                  <input type="text" class="t-d2 input-t" id="t-d2" name="phone" placeholder="연락처를 입력해 주세요">
+                  <i class="l"></i>
+                </div>
+                <div class="input-wrap perspective-ani">
+                  <label class="t-d3" for="t-d3">이메일</label>
+                  <input type="text" class="t-d3 input-t" id="t-d3" name="email" placeholder="이메일을 입력해주세요">
+                  <i class="l"></i>
+                </div>
+              </div>
+              <div class="getintouch-input02 perspective-ani">
+                <textarea class="getintouch-cont input-t" name="message" placeholder="메세지를 남겨주세요"></textarea>
+
+                <a href="javascript:void(0);" class="btn-submit common-btn01" onclick="formsubmit();">
+                  <span>연락주세요</span>
+                </a>
+                <i class="l"></i>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+      </div>
+      <div class="page-bottom">
+        <section class="contents-wrap">
+          <h2 class="page-end">
+            <i>&lt;</i>
+            <i>/</i>
+            <i>a</i>
+            <i>b</i>
+            <i>o</i>
+            <i>u</i>
+            <i>t</i>
+            <i>&gt;</i>
+            <span class="cursor">|</span>
+          </h2>
+          <a href="/project/" class="next-page page-link">
+            <span>project</span>
+            <i class="arrow"></i>
+          </a>
+        </section>
+      </div>
+    </div>
+    <script src="/js/jquery.vide.js"></script>
+
+
+    <% include partials/footer.ejs %>
+      </body>
+
+</html>

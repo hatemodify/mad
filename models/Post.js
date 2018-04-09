@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const postSchema = mongoose.Schema({
   title: {
     type: String,
-    require: true
+    require: true,
+    index: true
   },
   body: {
     type: String
@@ -28,7 +29,6 @@ const postSchema = mongoose.Schema({
       virtuals: true
     }
   });
-
 postSchema.virtual("createdDate").get(function () {
   return getDate(this.createdAt);
 });
@@ -60,6 +60,7 @@ function getTime(dateObj) {
 function get2digits(num) {
   return ("0" + num).slice(-2);
 }
+
 
 
 module.exports = Post;
