@@ -30,7 +30,7 @@ db.on("error", function (err) {
 });
 
 
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
 
