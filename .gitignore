@@ -206,5 +206,5 @@ local.properties
 ### Vagrant ###
 .vagrant/
 
-.vscode/
 .history/
+node_modules/
