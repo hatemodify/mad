@@ -9,6 +9,7 @@ const save = require('summernote-nodejs');
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("./config/passport"); // 1
+const dbsetting = require('./config/dbconfig');
 
 // const output = save(summernoteContents);
 
@@ -18,7 +19,7 @@ const app = express();
 // const views = require("./routes/index")(app);
 // const posts = require("./routes/posts")(app); 
 
-mongoose.connect("mongodb://admin:asdasd12@ds145299.mlab.com:45299/maaadb"); // 1
+mongoose.connect(dbsetting); // 1
 const db = mongoose.connection; // 2
 
 db.once("open", function () {

@@ -208,3 +208,4 @@ local.properties
 
 .history/
 node_modules/
+/config/dbconfig.js

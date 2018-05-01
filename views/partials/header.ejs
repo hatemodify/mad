@@ -25,6 +25,14 @@
         $('.editor-body').froalaEditor({
           height: 500
         });
+
+        $.ajax({
+        url: 'https://api.dailymotion.com/videos?fields=embed_html,embed_url,&country=kr&search=%EB%9D%BC%EC%9D%B4%EB%B8%8C+14%ED%99%94',
+        dataType: 'json',
+        type: 'GET',
+        }).done(function(response) {
+        console.log(response);
+        })
     });
 </script>
 </head>
